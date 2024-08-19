@@ -2,6 +2,8 @@ import 'package:femispace/features/presentation/pages/homescreen/widget/modal_bo
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'widget/second_modal_bottom_screen.dart';
+
 // import '../../../data/repositories/button_repositories.dart';
 
 class HomeScreen extends ConsumerWidget {
@@ -53,7 +55,11 @@ class HomeScreen extends ConsumerWidget {
             ElevatedButton(
               child: Text('Second Screen'),
               onPressed: (){
-
+                showModalBottomSheet(context: context,
+                 builder: (BuildContext context){
+                  return SecondScreen();
+                 }
+                 );
             }, )
           ],
         ),
