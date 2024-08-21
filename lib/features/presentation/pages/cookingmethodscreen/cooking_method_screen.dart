@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import '../../../domain/services/cooking_method_services.dart';
 
-
-class CookingMethodScreen extends StatelessWidget {
+class CookingMethodScreen extends StatefulWidget {
   final CookingMethodsService cookingMethodsService;
-  final Set<int> selectedIndices;
-  final List<String> cookingMethods;
+  final Set selectedIndices;
+  final List cookingMethods;
 
   const CookingMethodScreen({
     Key? key,
@@ -13,6 +12,13 @@ class CookingMethodScreen extends StatelessWidget {
     required this.selectedIndices,
     required this.cookingMethods,
   }) : super(key: key);
+
+  @override
+  _CookingMethodScreenState createState() => _CookingMethodScreenState();
+}
+
+class _CookingMethodScreenState extends State<CookingMethodScreen> {
+  bool _hasShownSnackBar = false;
 
   @override
   Widget build(BuildContext context) {
@@ -36,22 +42,22 @@ class CookingMethodScreen extends StatelessWidget {
               mainAxisSpacing: 20,
               childAspectRatio: 2.6,
             ),
-            itemCount: cookingMethods.length,
+            itemCount: widget.cookingMethods.length,
             itemBuilder: (context, index) {
               return SizedBox(
                 height: 40,
                 child: TextButton(
                   style: TextButton.styleFrom(
-                    backgroundColor: selectedIndices.contains(index)
+                    backgroundColor: widget.selectedIndices.contains(index)
                         ? Colors.purple
                         : Colors.white,
-                    foregroundColor: selectedIndices.contains(index)
+                    foregroundColor: widget.selectedIndices.contains(index)
                         ? Colors.white
                         : Colors.black,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                       side: BorderSide(
-                        color: selectedIndices.contains(index)
+                        color: widget.selectedIndices.contains(index)
                             ? Colors.purple
                             : Colors.grey.shade300,
                         width: 1,
@@ -59,16 +65,19 @@ class CookingMethodScreen extends StatelessWidget {
                     ),
                   ),
                   onPressed: () {
-                    cookingMethodsService.toggleSelection(index);
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text('Information Saved'),
-                        behavior: SnackBarBehavior.floating,
-                      ),
-                    );
+                    widget.cookingMethodsService.toggleSelection(index);
+                    if (!_hasShownSnackBar) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('Cooking Method Saved'),
+                          behavior: SnackBarBehavior.floating,
+                        ),
+                      );
+                      _hasShownSnackBar = true;
+                    }
                   },
                   child: Text(
-                    cookingMethods[index],
+                    widget.cookingMethods[index],
                     textAlign: TextAlign.center,
                     style: const TextStyle(fontSize: 11),
                   ),

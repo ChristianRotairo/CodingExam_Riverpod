@@ -22,6 +22,7 @@ class _CookingMethodsBottomSheetState
     with SingleTickerProviderStateMixin {
   bool _isViewDetails = true;
   late AnimationController _animationController;
+  bool _isShowSnackBar = false;
 
   @override
   void initState() {
@@ -74,13 +75,16 @@ class _CookingMethodsBottomSheetState
             child: FloatingActionButton(
               onPressed: () {
                 // Show the snackbar message
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text('Information saved'),
-                    behavior: SnackBarBehavior.floating,
-                    duration: Duration(seconds: 3),
-                  ),
-                );
+                if (!_isShowSnackBar) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Feelings Saved'),
+                      behavior: SnackBarBehavior.floating,
+                      duration: Duration(seconds: 3),
+                    ),
+                  );
+                  _isShowSnackBar = true;
+                }
 
                 // Navigate back
                 Navigator.pop(context);
@@ -100,8 +104,6 @@ class _CookingMethodsBottomSheetState
       ),
     );
   }
-
-  
 
   Widget _buildToggleButtons() {
     return Center(
