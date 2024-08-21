@@ -1,4 +1,4 @@
-import 'package:femispace/features/presentation/pages/homescreen/modal_bottom_sheet_tile_widget.dart';
+import 'package:femispace/features/presentation/pages/homescreen/bottom_sheet_tile_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

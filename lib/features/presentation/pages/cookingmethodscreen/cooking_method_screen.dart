@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import '../../../domain/services/cooking_method_services.dart';
 
 
-class ViewDetailsContent extends StatelessWidget {
+class CookingMethodScreen extends StatelessWidget {
   final CookingMethodsService cookingMethodsService;
   final Set<int> selectedIndices;
   final List<String> cookingMethods;
 
-  const ViewDetailsContent({
+  const CookingMethodScreen({
     Key? key,
     required this.cookingMethodsService,
     required this.selectedIndices,
@@ -20,7 +20,7 @@ class ViewDetailsContent extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Padding(
-          padding: EdgeInsets.only(right: 170.0),
+          padding: EdgeInsets.only(right: 150.0),
           child: Text(
             'Select Meal Cooking Method',
             style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
@@ -70,7 +70,7 @@ class ViewDetailsContent extends StatelessWidget {
                   child: Text(
                     cookingMethods[index],
                     textAlign: TextAlign.center,
-                    style: const TextStyle(fontSize: 12),
+                    style: const TextStyle(fontSize: 11),
                   ),
                 ),
               );

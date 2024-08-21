@@ -62,7 +62,7 @@ class _CookingMethodsBottomSheetState
           AnimatedSwitcher(
             duration: const Duration(milliseconds: 300),
             child: _isViewDetails
-                ? ViewDetailsContent(
+                ? CookingMethodScreen(
                     cookingMethodsService: cookingMethodsService,
                     selectedIndices: selectedIndices,
                     cookingMethods: widget.cookingMethods,
