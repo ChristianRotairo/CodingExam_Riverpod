@@ -1,10 +1,7 @@
-import 'package:femispace/features/presentation/pages/homescreen/widget/modal_bottom_sheet.dart';
+import 'package:femispace/features/presentation/pages/homescreen/modal_bottom_sheet_tile_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'widget/second_modal_bottom_screen.dart';
-
-// import '../../../data/repositories/button_repositories.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -31,7 +28,6 @@ class HomeScreen extends ConsumerWidget {
       'Glossed',
       'Air fried',
     ];
-
     return Scaffold(
       body: Center(
         child: Column(
@@ -51,16 +47,6 @@ class HomeScreen extends ConsumerWidget {
                 );
               },
             ),
-
-            ElevatedButton(
-              child: Text('Second Screen'),
-              onPressed: (){
-                showModalBottomSheet(context: context,
-                 builder: (BuildContext context){
-                  return SecondScreen();
-                 }
-                 );
-            }, )
           ],
         ),
       ),

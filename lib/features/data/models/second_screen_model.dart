@@ -1,6 +1,4 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-// Define the state model
 class SelectionState {
   final String selectedFeeling;
   final String selectedPlace;
@@ -50,4 +48,6 @@ class SelectionNotifier extends StateNotifier<SelectionState> {
   }
 
   void resetSelections() {}
+
+  void saveSelections() {}
 }
